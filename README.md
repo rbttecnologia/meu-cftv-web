@@ -1,2 +1,102 @@
 # meu-cftv-web
 Vigilancia com Inteligencia
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Sistema de CFTV em Nuvem</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📹 Cadastro de Câmera IP</h1>
+        <form id="cameraForm">
+            <div class="form-group">
+                <label for="cameraName">Nome da Câmera:</label>
+                <input type="text" id="cameraName" placeholder="Ex: Portão Principal" required>
+            </div>
+            <div class="form-group">
+                <label for="cameraIP">Endereço IP/URL da Câmera:</label>
+                <input type="text" id="cameraIP" placeholder="Ex: rtsp://admin:senha@192.168.1.100" required>
+            </div>
+            <div class="form-group">
+                <label for="storageType">Onde gravar?</label>
+                <select id="storageType">
+                    <option value="google_drive">Google Drive</option>
+                    <option value="aws_s3">AWS S3 (Free Tier)</option>
+                </select>
+            </div>
+            <button type="submit">Cadastrar Câmera</button>
+        </form>
+        <div id="message" style="margin-top: 20px;"></div>
+    </div>
+
+    <script>
+        document.getElementById('cameraForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const cameraName = document.getElementById('cameraName').value;
+            const cameraIP = document.getElementById('cameraIP').value;
+            const storageType = document.getElementById('storageType').value;
+            
+            // Simulação de envio (substitua por uma chamada real ao backend)
+            document.getElementById('message').innerHTML = `
+                <p style="color: green;">✅ Câmera <strong>${cameraName}</strong> cadastrada com sucesso!</p>
+                <p>URL: <code>${cameraIP}</code></p>
+                <p>Armazenamento: <strong>${storageType}</strong></p>
+            `;
+            
+            // Limpar formulário
+            document.getElementById('cameraForm').reset();
+        });
+    </script>
+</body>
+</html>
